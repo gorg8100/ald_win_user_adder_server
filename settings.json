@@ -14,7 +14,7 @@
   },
   "transform_scheme": {
     "user": {
-      "Имя учетной записи пользователя": "name",
+      "Имя учётной записи пользователя": "name",
       "dn": "dn",
       "Link to department": "ltd",
       "ipantsecurityidentifier": "sec_id"

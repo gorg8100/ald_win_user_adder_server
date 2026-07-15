@@ -24,7 +24,7 @@ def scheme_injector(scheme: dict[str, str], injector_scheme: dict[str, str], sch
 
 
 def schemes_injector():
-    user = {"Имя учетной записи пользователя": "name",
+    user = {"Имя учётной записи пользователя": "name",
             "ipantsecurityidentifier": "sec_id",
             "Участник групп": "groups"}
     scheme_injector(TRANSFORM_SCHEME, user, "user")
