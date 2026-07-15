@@ -9,6 +9,7 @@ import json
 
 @logg()
 def parse_line(line: str) -> tuple[str, str]:
+    print(line)
     sep = line.index(":")
     key = line[:sep]
     value = line[sep + 2:]
