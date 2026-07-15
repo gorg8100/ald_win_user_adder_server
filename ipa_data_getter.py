@@ -1,7 +1,7 @@
 from __future__ import annotations
 from my_functools import do_command
 from logger_logic import logg
-from settings_loader import TRANSFORM_SCHEME, OBJ_FILTER, COMMANDS
+from settings_loader import TRANSFORM_SCHEME, OBJ_FILTER, COMMANDS, DATA_FILE_PATH
 import unittest
 from typing import Union
 import json
@@ -95,6 +95,6 @@ def data_formation() -> dict:
 
 @logg()
 def write_data():
-    with open('sw_templates.json', 'w') as f:
+    with open(DATA_FILE_PATH, 'w') as f:
         f.write(json.dumps(data_formation()))
     return
