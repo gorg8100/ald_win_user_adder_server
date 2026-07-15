@@ -23,9 +23,6 @@ def data_parser(data: list[str], scheme: dict[str, str], scheme_type: str) -> li
     fields = set(scheme.values())
     for line in data:
         key, value = parse_line(line)
-        print(key)
-        print(scheme)
-        print(element)
         element[scheme[key]] = value
         if fields.issubset(element):
             elements.append(element)

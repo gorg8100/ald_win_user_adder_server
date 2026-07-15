@@ -132,7 +132,6 @@ class RegexpCond(ConditionBase):
 
 
 def condition_validator(condition: dict):
-    print(condition)
     if "cond_type" in condition:
         condition_type: str = condition["cond_type"]
         resolver_dict = {"or": OrCond, "and": AndCond, "not": NotCond, "is_user": IsUserCond, "is_group": IsGroupCond,
