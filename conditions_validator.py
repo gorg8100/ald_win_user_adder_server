@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import final, Type
+from typing import Type
 from abc import ABC
 from settings_loader import TRANSFORM_SCHEME, OBJ_FILTER
 from logger_logic import logg
@@ -11,7 +11,6 @@ class ConditionBase(ABC):
                      "IsUserCond": "is_user", "IsGroupCond": "is_group", "FieldsOpCond": "fields_op",
                      "RegexpCond": "regexp"}
 
-    @final
     def __init__(self, condition_data: dict):
         self.condition_data = condition_data
         self.validator(condition_data)
@@ -19,17 +18,14 @@ class ConditionBase(ABC):
     def validator(self, condition_data: dict):
         pass
 
-    @final
     def get_my_name(self) -> str:
         return self.name_resolver[self.__class__.__name__]
 
-    @final
     def field_error(self, field: str):
         raise KeyError(
             f"Error in condition {self.get_my_name()}. The mandatory '{field}' field was not found in the condition:"
             f"\n{self.condition_data}")
 
-    @final
     def type_error(self, field: str, variants: set[str]):
         raise TypeError(
             f"Error in condition {self.get_my_name()}. {field} must be ({variants}) in the condition:"
