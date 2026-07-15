@@ -69,7 +69,6 @@ def get_users_data(fields: list[str]) -> list[str]:
 @logg()
 def groups_line_split(line: str) -> list[str]:
     elements = line.split(",")
-    is_first = True
     for i in range(len(elements)):
         if i == 0:
             continue
