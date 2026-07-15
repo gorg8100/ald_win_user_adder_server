@@ -18,6 +18,7 @@ def parse_line(line: str) -> tuple[str, str]:
 
 @logg()
 def data_parser(data: list[str], scheme: dict[str, str], scheme_type: str) -> list[dict[str, str]]:
+    print(scheme)
     elements = []
     element = {}
     fields = set(scheme.values())
