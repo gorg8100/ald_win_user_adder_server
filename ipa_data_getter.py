@@ -9,15 +9,10 @@ import json
 
 @logg()
 def parse_line(line: str) -> tuple[str, str]:
-    print("====")
-    print(line)
     sep = line.index(":")
     key = line[:sep]
     value = line[sep + 2:]
-    print(key)
-    print(value)
-    print("====")
-    return key, value
+    return key.lstrip(), value
 
 
 @logg()
@@ -44,7 +39,7 @@ def data_parser(data: list[str], scheme: dict[str, str], scheme_type: str) -> li
 
 class ParsersTests(unittest.TestCase):
     def test_parse_line(self):
-        print(parse_line(line))
+        line = "test field: test"
         self.assertEqual(parse_line(line), ('test field', 'test'))
         return
 
