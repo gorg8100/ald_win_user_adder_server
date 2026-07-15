@@ -96,5 +96,5 @@ def data_formation() -> dict:
 @logg()
 def write_data():
     with open(DATA_FILE_PATH, 'w') as f:
-        f.write(json.dumps(data_formation()))
+        f.write(json.dumps(data_formation(), indent=4, ensure_ascii=False))
     return
