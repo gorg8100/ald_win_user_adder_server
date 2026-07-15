@@ -67,12 +67,23 @@ def get_users_data(fields: list[str]) -> list[str]:
 
 
 @logg()
+def groups_line_split(line: str) -> list[str]:
+    elements = line.split(",")
+    is_first = True
+    for element in elements:
+        if is_first:
+            is_first = False
+        element = element[1:]
+    return elements
+
+
+@logg()
 def user_formation() -> list[dict[str, Union[str, list[str]]]]:
     user_scheme: dict[str, str] = TRANSFORM_SCHEME["user"]
     users_data = get_users_data(list(user_scheme.keys()))
     users: list[dict[str, Union[str, list[str]]]] = data_parser(users_data, user_scheme, "user")
     for user in users:
-        user["groups"] = list(map(lambda x: x[1:], user["groups"].split(",")))
+        user["groups"] = groups_line_split(user["groups"])
     return users
 
 
