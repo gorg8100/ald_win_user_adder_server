@@ -9,7 +9,7 @@ import json
 
 @logg()
 def parse_line(line: str) -> tuple[str, str]:
-    print(line)
+    print(f"|{line}|")
     sep = line.index(":")
     key = line[:sep]
     value = line[sep + 2:]
@@ -22,6 +22,8 @@ def data_parser(data: list[str], scheme: dict[str, str], scheme_type: str) -> li
     element = {}
     fields = set(scheme.values())
     for line in data:
+        if not line:
+            continue
         key, value = parse_line(line)
         element[scheme[key]] = value
         if fields.issubset(element):
