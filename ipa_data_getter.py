@@ -3,7 +3,7 @@ from my_functools import do_command
 from logger_logic import logg
 from settings_loader import TRANSFORM_SCHEME, OBJ_FILTER, COMMANDS
 import unittest
-from typing import Literal, Union
+from typing import Union
 import json
 
 
@@ -16,7 +16,7 @@ def parse_line(line: str) -> tuple[str, str]:
 
 
 @logg()
-def data_parser(data: list[str], scheme: dict[str, str], scheme_type: Literal["user", "group"]) -> list[dict[str, str]]:
+def data_parser(data: list[str], scheme: dict[str, str], scheme_type: str) -> list[dict[str, str]]:
     elements = []
     element = {}
     fields = set(scheme.values())

@@ -2,12 +2,12 @@ from __future__ import annotations
 import functools
 import time
 from datetime import datetime
-from typing import TypeVar, Callable, Literal
+from typing import TypeVar, Callable
 from settings_loader import DATA_LOGS_PATH
 from info_raise import InfoRaise
 
 
-def write_log(record_type: Literal["Error", "RepeatError"], error: Exception, func_name: str):
+def write_log(record_type: str, error: Exception, func_name: str):
     with InfoRaise(
             f"Error when opening a file to write to the log at the path {DATA_LOGS_PATH} with error {error} in {func_name}"):
         with open(DATA_LOGS_PATH, "a") as file:

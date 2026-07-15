@@ -1,10 +1,9 @@
 from __future__ import annotations
 from settings_loader import TRANSFORM_SCHEME
-from typing import Literal
 from logger_logic import logg
 
 
-def call_key_error(field: Literal["user", "group"]):
+def call_key_error(field: str):
     raise KeyError(f"The mandatory field '{field}' is missing in 'transform_scheme'.")
 
 
@@ -16,7 +15,7 @@ def validate_transform_scheme():
         call_key_error("group")
 
 
-def scheme_injector(scheme: dict[str, str], injector_scheme: dict[str, str], scheme_type: Literal["user", "group"]):
+def scheme_injector(scheme: dict[str, str], injector_scheme: dict[str, str], scheme_type: str):
     for key in injector_scheme:
         if key in scheme and scheme[key] != injector_scheme[key]:
             raise ValueError(f"System values are redefined in the {scheme_type} transformation schema."
