@@ -30,9 +30,6 @@
         "cond_type": "and",
         "conditions": [
           {
-            "cond_type": "fields_op"
-          },
-          {
             "cond_type": "is_group"
           },
           {

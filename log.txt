@@ -1,0 +1,2 @@
+========================
+[2026-07-15 22:47:36][Error]KeyError: "Error in condition fields_op. The mandatory 'op' field was not found in the condition:\n{'cond_type': 'fields_op'}". In validate_commands.
