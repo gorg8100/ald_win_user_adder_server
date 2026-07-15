@@ -1,0 +1,64 @@
+{
+  "log_file_path": "log.txt",
+  "data_file_path": "data.json",
+  "obj_filter": {
+    "cond_type": "or",
+    "conditions": [
+      {
+        "cond_type": "is_user"
+      },
+      {
+        "cond_type": "is_group"
+      }
+    ]
+  },
+  "transform_scheme": {
+    "user": {
+      "Имя учетной записи пользователя": "name",
+      "dn": "dn",
+      "Link to department": "ltd",
+      "ipantsecurityidentifier": "sec_id"
+    },
+    "group": {
+      "Имя группы": "name",
+      "Link to department": "ltd"
+    }
+  },
+  "commands": [
+    {
+      "condition": {
+        "cond_type": "and",
+        "conditions": [
+          {
+            "cond_type": "fields_op"
+          },
+          {
+            "cond_type": "is_group"
+          },
+          {
+            "cond_type": "is_user"
+          },
+          {
+            "cond_type": "fields_op",
+            "l_v": {
+              "source": "const",
+              "value": 1
+            },
+            "r_v": {
+              "source": "object",
+              "field": "name"
+            },
+            "op": "=="
+          },
+          {
+            "cond_type": "regexp",
+            "field": "",
+            "value": ""
+          }
+        ]
+      },
+      "ctype": "add_to_local_group",
+      "local_group": "Administrators"
+    }
+  ]
+}

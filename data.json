@@ -1,0 +1,23 @@
+{
+  "obj_filter": {
+
+  },
+  "users": [
+    {
+      "name": "test",
+      "sec_id": "",
+      "dn": "",
+      "ltd": ""
+    }
+  ],
+  "groups": [
+    {
+      "name": "test_group",
+      "sec_id": "",
+      "ltd": ""
+    }
+  ],
+  "commands": [
+
+  ]
+}
