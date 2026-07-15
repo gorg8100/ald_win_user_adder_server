@@ -65,6 +65,8 @@ class ParsersTests(unittest.TestCase):
 
 @logg()
 def get_users_data(fields: list[str]) -> list[str]:
+    print(f'ipa user-find --sizelimit=0 --all | grep -E "{"|".join(fields)}"')
+    print(do_command(f'ipa user-find --sizelimit=0 --all | grep -E "{"|".join(fields)}"').split("\n"))
     return do_command(f'ipa user-find --sizelimit=0 --all | grep -E "{"|".join(fields)}"').split("\n")
 
 
