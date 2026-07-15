@@ -9,7 +9,6 @@ import json
 
 @logg()
 def parse_line(line: str) -> tuple[str, str]:
-    print(f"|{line}|")
     sep = line.index(":")
     key = line[:sep]
     value = line[sep + 2:]
@@ -18,7 +17,6 @@ def parse_line(line: str) -> tuple[str, str]:
 
 @logg()
 def data_parser(data: list[str], scheme: dict[str, str], scheme_type: str) -> list[dict[str, str]]:
-    print(scheme)
     elements = []
     element = {}
     fields = set(scheme.values())
@@ -65,8 +63,6 @@ class ParsersTests(unittest.TestCase):
 
 @logg()
 def get_users_data(fields: list[str]) -> list[str]:
-    print(f'ipa user-find --sizelimit=0 --all | grep -E "{"|".join(fields)}"')
-    print(do_command(f'ipa user-find --sizelimit=0 --all | grep -E "{"|".join(fields)}"').split("\n"))
     return do_command(f'ipa user-find --sizelimit=0 --all | grep -E "{"|".join(fields)}"').split("\n")
 
 

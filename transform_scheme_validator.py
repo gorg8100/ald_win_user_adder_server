@@ -15,12 +15,12 @@ def validate_transform_scheme():
         call_key_error("group")
 
 
-def scheme_injector(scheme: dict[str, str], injector_scheme: dict[str, str], scheme_type: str):
+def scheme_injector(scheme: dict[str, dict[str, str]], injector_scheme: dict[str, str], scheme_type: str):
     for key in injector_scheme:
         if key in scheme and scheme[key] != injector_scheme[key]:
             raise ValueError(f"System values are redefined in the {scheme_type} transformation schema."
                              f" Functional meanings: {injector_scheme[key]}")
-        scheme[key] = injector_scheme[key]
+        scheme[scheme_type][key] = injector_scheme[key]
 
 
 def schemes_injector():
