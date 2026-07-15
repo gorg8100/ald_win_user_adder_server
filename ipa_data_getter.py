@@ -70,10 +70,10 @@ def get_users_data(fields: list[str]) -> list[str]:
 def groups_line_split(line: str) -> list[str]:
     elements = line.split(",")
     is_first = True
-    for element in elements:
-        if is_first:
-            is_first = False
-        element = element[1:]
+    for i in range(len(elements)):
+        if i == 0:
+            continue
+        elements[i] = elements[i][1:]
     return elements
 
 
