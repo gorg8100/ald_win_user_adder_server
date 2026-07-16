@@ -13,7 +13,7 @@ def validate_all():
 
 def main():
     validate_all()
-    # write_data()
+    write_data()
     return
 
 
