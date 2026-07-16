@@ -1,7 +1,0 @@
-========================
-[2026-07-15 22:47:36][Error]KeyError: "Error in condition fields_op. The mandatory 'op' field was not found in the condition:\n{'cond_type': 'fields_op'}". In validate_commands.
-========================
-[2026-07-16 12:02:45][Error]TypeError: unknown condition is_groupe. In validate_commands.
-========================
-[2026-07-16 12:03:01][Error]TypeError: Error in condition fields_op. source must be ({'object', 'const', 'computer'}) in the condition:
-{'cond_type': 'fields_op', 'l_v': {'source': 'const', 'value': 1}, 'r_v': {'source': 'objectd', 'field': 'name'}, 'op': '=='}. In validate_commands.
