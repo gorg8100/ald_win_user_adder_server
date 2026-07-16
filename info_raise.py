@@ -7,4 +7,5 @@ class InfoRaise:
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         if exc_type is not None:
-            raise RuntimeError(f"{self.msg}\n{type(exc_val).__name__}: {exc_val}")
+            raise RuntimeError(f"{self.msg}"
+                               f"\n{type(exc_val).__name__}: {exc_val}")

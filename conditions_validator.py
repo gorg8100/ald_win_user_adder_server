@@ -32,7 +32,8 @@ class ConditionBase(ABC):
             f"\n{self.condition_data}")
 
     def general_error(self, error: Type[Exception], msg: str):
-        raise error(f"Error in condition {self.get_my_name()}. {msg}:\n{self.condition_data}")
+        raise error(f"Error in condition {self.get_my_name()}. {msg}:"
+                    f"\n{self.condition_data}")
 
 
 class OrCond(ConditionBase):
