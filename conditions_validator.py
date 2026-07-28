@@ -130,6 +130,13 @@ class RegexpCond(ConditionBase):
             pass
         else:
             self.field_error("field")
+        if "source" in condition_data:
+            if "source" in {"object", "computer"}:
+                pass
+            else:
+                self.type_error("source", {"object", "computer"})
+        else:
+            self.field_error("source")
 
 
 def condition_validator(condition: dict):
