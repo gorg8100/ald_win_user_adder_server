@@ -50,7 +50,8 @@
           {
             "cond_type": "regexp",
             "field": "",
-            "value": ""
+            "value": "",
+            "source": "computer"
           }
         ]
       },
