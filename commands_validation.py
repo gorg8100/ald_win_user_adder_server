@@ -12,7 +12,7 @@ def validate_command(command: dict):
     if command["ctype"] not in commands_set:
         raise TypeError(f"There is no such command {command['ctype']}. Existing commands: {commands_set}")
     if command["ctype"] == "add_to_local_group":
-        if "local_group" not in command:
+        if "local_groups" not in command:
             raise KeyError("The 'local_group' field is mandatory for the add_to_local_group command.")
 
 

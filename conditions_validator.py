@@ -131,7 +131,7 @@ class RegexpCond(ConditionBase):
         else:
             self.field_error("field")
         if "source" in condition_data:
-            if "source" in {"object", "computer"}:
+            if condition_data["source"] in {"object", "computer"}:
                 pass
             else:
                 self.type_error("source", {"object", "computer"})
@@ -206,6 +206,7 @@ class ValidatorsTests(unittest.TestCase):
     def test_regexp(self):
         conditions = {"cond_type": "regexp",
                       "value": "test",
-                      "field": ""}
+                      "field": "",
+                      "source": "computer"}
         condition_validator(conditions)
         self.assertTrue(True)
