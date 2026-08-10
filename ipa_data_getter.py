@@ -62,7 +62,7 @@ class ParsersTests(unittest.TestCase):
 
 
 def get_users_groups_data(req_type: str, fields: list[str]) -> list[str]:
-    lines = do_command([f"ipa", "{req_type}-find", "--sizelimit=0", "--all"]).split("\n")
+    lines = do_command([f"ipa", f"{req_type}-find", "--sizelimit=0", "--all"]).split("\n")
     ret = []
     for line in lines:
         strip_line = line.lstrip()
