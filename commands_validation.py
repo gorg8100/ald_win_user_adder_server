@@ -7,7 +7,7 @@ from logger_logic import logg
 def validate_command(command: dict):
     condition_validator(command["condition"])
     if "ctype" not in command:
-        raise KeyError(f"Mandatory field 'ctype' is missing in the command:")
+        raise KeyError(f"Mandatory field 'ctype' is missing in the command:\n{command}")
     commands_set = {"add_to_local_group"}
     if command["ctype"] not in commands_set:
         raise TypeError(f"There is no such command {command['ctype']}. Existing commands: {commands_set}")
