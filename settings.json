@@ -55,7 +55,6 @@
           }
         ]
       },
-      "ctype": "add_to_local_group",
       "local_groups": ["Administrators"]
     }
   ]

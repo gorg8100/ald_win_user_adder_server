@@ -3,11 +3,11 @@ import subprocess
 from typing import Union
 
 
-def do_command(command: str, sudo: bool = False, inp: str = None, check_code: bool = True, ret_code: bool = False) -> \
+def do_command(command: list[str], sudo: bool = False, inp: str = None, check_code: bool = True, ret_code: bool = False) -> \
         Union[str, tuple[int, str]]:
     if sudo:
-        command = "sudo " + command
-    result = subprocess.run(command, text=True, shell=True, input=inp, capture_output=True)
+        command = ["sudo"] + command
+    result = subprocess.run(command, text=True, shell=False, input=inp, capture_output=True)
     if check_code and result.returncode != 0:
         raise RuntimeError(f"Command {command} failed, with exit code {result.returncode} and msg:"
                            f"\n{result.stderr}")

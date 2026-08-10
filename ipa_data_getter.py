@@ -12,7 +12,7 @@ def parse_line(line: str) -> tuple[str, str]:
     sep = line.index(":")
     key = line[:sep]
     value = line[sep + 2:]
-    return key.lstrip(), value
+    return key, value
 
 
 @logg()
@@ -61,9 +61,15 @@ class ParsersTests(unittest.TestCase):
         return
 
 
-@logg()
-def get_users_data(fields: list[str]) -> list[str]:
-    return do_command(f'ipa user-find --sizelimit=0 --all | grep -E "{"|".join(fields)}"').split("\n")
+def get_users_groups_data(req_type: str, fields: list[str]) -> list[str]:
+    lines = do_command([f"ipa {req_type}-find", "--sizelimit=0", "--all"]).split("\n")
+    ret = []
+    for line in lines:
+        strip_line = line.lstrip()
+        for field in fields:
+            if strip_line.startswith(field):
+                ret.append(strip_line)
+    return ret
 
 
 @logg()
@@ -79,7 +85,7 @@ def groups_line_split(line: str) -> list[str]:
 @logg()
 def user_formation() -> list[dict[str, Union[str, list[str]]]]:
     user_scheme: dict[str, str] = TRANSFORM_SCHEME["user"]
-    users_data = get_users_data(list(user_scheme.keys()))
+    users_data = get_users_groups_data("user", list(user_scheme.keys()))
     users: list[dict[str, Union[str, list[str]]]] = data_parser(users_data, user_scheme, "user")
     for user in users:
         user["groups"] = groups_line_split(user["groups"])
@@ -87,15 +93,10 @@ def user_formation() -> list[dict[str, Union[str, list[str]]]]:
 
 
 @logg()
-def get_groups_data(fields: list[str]) -> list[str]:
-    return do_command(f'ipa group-find --sizelimit=0 --all | grep -E "{"|".join(fields)}"').split("\n")
-
-
-@logg()
 def group_formation() -> list[dict[str, str]]:
     group_scheme: dict[str, str] = TRANSFORM_SCHEME["group"]
-    users_data = get_groups_data(list(group_scheme.keys()))
-    return data_parser(users_data, group_scheme, "group")
+    groups_data = get_users_groups_data("group", list(group_scheme.keys()))
+    return data_parser(groups_data, group_scheme, "group")
 
 
 @logg()
